@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head><title>Admin Panel</title></head>
+<body style="text-align:center;">
+  <h2>Admin Panel</h2>
+  <a href="/admin/logout">Logout</a>
+  <table border="1" style="margin: 0 auto; margin-top: 20px;">
+    <tr>
+      <th>UUID</th>
+      <th>Files</th>
+      <th>Action</th>
+    </tr>
+    <% files.forEach(file => { %>
+      <tr>
+        <td><%= file.uuid %></td>
+        <td>
+          <% file.files.forEach(f => { %>
+            <div><%= f %></div>
+          <% }) %>
+        </td>
+        <td>
+          <form action="/admin/delete/<%= file.uuid %>" method="POST">
+            <button type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </table>
+</body>
+</html>
